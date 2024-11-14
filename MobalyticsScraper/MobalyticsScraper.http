@@ -1,0 +1,6 @@
+@MobalyticsScraper_HostAddress = http://localhost:5249
+
+GET {{MobalyticsScraper_HostAddress}}/api/ChampionBuild/neeko
+Accept: application/json
+
+###
