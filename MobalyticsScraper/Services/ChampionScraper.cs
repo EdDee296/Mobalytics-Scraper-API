@@ -9,9 +9,9 @@ namespace ChampionBuildApi.Services
 {
     public class ChampionScraper : IChampionScraper
     {
-        public async Task<ChampionBuild> GetChampionBuildAsync(string champion)
+        public async Task<ChampionBuild> GetChampionBuildAsync(string champion, string role)
         {
-            var url = $"https://mobalytics.gg/lol/champions/{champion}/build";
+            var url = $"https://mobalytics.gg/lol/champions/{champion}/build/{role}";
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
 
