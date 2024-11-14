@@ -1,6 +1,6 @@
 using ChampionBuildApi.Services;
 using Microsoft.AspNetCore.OpenApi;
-using Microsoft.OpenApi.Models; // Add this using directive
+using Microsoft.OpenApi.Models; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,13 +17,11 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1",
         Description = "An API for retrieving champion builds and scraping data from Mobalytics.",
     });
+
+    // If you're using specific API models, make sure to include them here
+    // c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "YourXmlDocumentation.xml"));
 });
 
-
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
-// Register the IChampionScraper service
 builder.Services.AddScoped<IChampionScraper, ChampionScraper>();
 
 var app = builder.Build();
@@ -31,18 +29,16 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI(c => // Modify this line to include a parameter
+    app.UseSwagger();  // Enable Swagger UI middleware
+    app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mobascraper V1");
+        c.RoutePrefix = string.Empty; // Optional: Makes Swagger UI available at the root URL
     });
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

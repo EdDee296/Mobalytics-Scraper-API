@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using ChampionBuildApi.Services;
-using ChampionBuildApi.Models;
 
 namespace ChampionBuildApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     [Route("api/[controller]")]
-    [ApiExplorerSettings(GroupName = "Champion Build Endpoints")]
+    [ApiExplorerSettings(GroupName = "v1")]
     [Produces("application/json")]
     public class ChampionBuildController : ControllerBase
     {
@@ -24,8 +22,6 @@ namespace ChampionBuildApi.Controllers
         /// <param name="champion">The champion's name (e.g., "yasuo").</param>
         /// <returns>Champion build information including items, spells, and runes.</returns>
         [HttpGet("{champion}")]
-        [ProducesResponseType(typeof(ChampionBuild), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetChampionBuild(string champion)
         {
             if (string.IsNullOrWhiteSpace(champion))
