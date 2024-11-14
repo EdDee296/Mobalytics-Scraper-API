@@ -1,6 +1,6 @@
 # MobalyticsScraper
 
-An API to pull latest builds, runes and spells for any champion in League of Legends from Mobalytics
+An API to pull latest builds, runes and spells for any champion in League of Legends from Mobalytics. Already dockerized and deployed on Google Cloud, ready to use!
 
 # Documentation
 
