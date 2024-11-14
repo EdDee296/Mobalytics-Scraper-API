@@ -1,0 +1,6 @@
+services:
+  mobalyticsscraper:
+    image: ${DOCKER_REGISTRY-}mobalyticsscraper
+    build:
+      context: .
+      dockerfile: MobalyticsScraper/Dockerfile

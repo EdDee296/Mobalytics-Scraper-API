@@ -27,15 +27,12 @@ builder.Services.AddScoped<IChampionScraper, ChampionScraper>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();  // Enable Swagger UI middleware
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();  // Enable Swagger UI middleware
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mobascraper V1");
-        c.RoutePrefix = string.Empty; // Optional: Makes Swagger UI available at the root URL
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mobascraper V1");
+    c.RoutePrefix = string.Empty; // Optional: Makes Swagger UI available at the root URL
+});
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
