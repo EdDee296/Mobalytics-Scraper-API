@@ -4,4 +4,4 @@ An API to pull latest builds, runes and spells for any champion in League of Leg
 
 # Documentation
 
-To see the documentation, please visit the [API documentation](https://mobscraper-486763057503.northamerica-northeast2.run.app)
+To see the documentation, please visit the this link: https://mobascraper.eddee.engineer
